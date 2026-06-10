@@ -163,17 +163,17 @@ export default function App() {
     }
   };
 
-  const fadeUpVariant: Variants = {
-    hidden: { opacity: 0, y: 40 },
+  const sectionVariant: Variants = {
+    hidden: { opacity: 0, y: 20 },
     visible: { 
       opacity: 1, 
       y: 0, 
-      transition: { duration: 0.8, ease: "easeInOut" } 
+      transition: { duration: 0.5, ease: "easeOut" } 
     }
   };
 
   return (
-    <div className="min-h-screen bg-[#0a0a0c] text-white font-sans selection:bg-[#0071e3] selection:text-white">
+    <div className="min-h-screen bg-[#0a0a0c] text-white font-sans selection:bg-[#0071e3] selection:text-white scroll-smooth">
       
       {/* Navigation Bar */}
       <nav className="sticky top-0 z-40 backdrop-blur-md bg-[#0a0a0c]/70 border-b border-white/10 px-6 py-4">
@@ -190,27 +190,27 @@ export default function App() {
       {/* Hero Section */}
       <section className="min-h-[85vh] flex flex-col justify-center items-center text-center px-4 max-w-4xl mx-auto">
         <motion.p 
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.4 }}
           className="text-[#0071e3] font-semibold tracking-wide text-lg mb-3"
         >
           Robust Software Architectures
         </motion.p>
         
         <motion.h1 
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.1 }}
+          transition={{ duration: 0.5, delay: 0.1 }}
           className="text-5xl md:text-7xl font-bold tracking-tight mb-6 bg-gradient-to-b from-white to-neutral-400 bg-clip-text text-transparent"
         >
           Building scalable logic & microservice systems.
         </motion.h1>
 
         <motion.p 
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
           className="text-lg md:text-xl text-neutral-400 max-w-2xl mb-10 leading-relaxed"
         >
           Software Developer specializing in production-grade backends and dynamic client applications. Dedicated to optimization, caching structures, and messaging queues.
@@ -219,7 +219,7 @@ export default function App() {
         <motion.div 
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 0.4 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
           className="flex flex-wrap gap-4 justify-center"
         >
           <button 
@@ -256,8 +256,8 @@ export default function App() {
           <motion.div
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={fadeUpVariant}
+            viewport={{ once: true, amount: 0.2 }}
+            variants={sectionVariant}
           >
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-8">Professional Summary</h2>
             <p className="text-lg text-neutral-400 leading-relaxed mb-6">
@@ -275,8 +275,8 @@ export default function App() {
         <motion.div
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={fadeUpVariant}
+          viewport={{ once: true, amount: 0.2 }}
+          variants={sectionVariant}
           className="mb-16 text-center md:text-left"
         >
           <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">Technical Portfolio</h2>
@@ -289,16 +289,17 @@ export default function App() {
               key={index}
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true, margin: "-100px" }}
-              variants={fadeUpVariant}
-              className="bg-[#1c1c1e] border border-white/10 rounded-3xl overflow-hidden hover:border-white/20 transition-all duration-300 flex flex-col justify-between"
+              viewport={{ once: true, amount: 0.15 }}
+              variants={sectionVariant}
+              whileHover={{ y: -6, transition: { duration: 0.2, ease: "easeInOut" } }}
+              className="bg-[#1c1c1e] border border-white/10 rounded-3xl overflow-hidden hover:border-white/20 transition-all duration-300 flex flex-col justify-between shadow-xl"
             >
               {/* Visual Presentation Area */}
               <div className="h-56 w-full relative bg-gradient-to-r from-neutral-900 via-zinc-800 to-neutral-900 border-b border-white/5 flex items-center justify-center overflow-hidden">
                 <img 
                   src={project.imagePath} 
                   alt={project.title}
-                  className="w-full h-full object-cover opacity-35 absolute inset-0 transition-transform duration-500 hover:scale-105"
+                  className="w-full h-full object-cover opacity-35 absolute inset-0"
                   onError={(e) => {
                     (e.target as HTMLElement).style.display = 'none';
                   }}
@@ -381,8 +382,8 @@ export default function App() {
           <motion.div
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={fadeUpVariant}
+            viewport={{ once: true, amount: 0.2 }}
+            variants={sectionVariant}
             className="mb-16 text-center"
           >
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">Technical Framework Hierarchy</h2>
@@ -453,10 +454,10 @@ export default function App() {
             
             {/* Modal Box Container */}
             <motion.div 
-              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              initial={{ opacity: 0, scale: 0.95, y: 15 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.95, y: 20 }}
-              transition={{ duration: 0.3 }}
+              exit={{ opacity: 0, scale: 0.95, y: 15 }}
+              transition={{ duration: 0.2 }}
               className="relative w-full max-w-2xl bg-[#1c1c1e] border border-white/10 rounded-3xl p-6 md:p-10 shadow-2xl z-10 max-h-[90vh] overflow-y-auto"
             >
               <button 
