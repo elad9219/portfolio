@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion, AnimatePresence, type Variants } from 'framer-motion';
-import { Mail, ExternalLink, FileText, Code2, Layers, Cpu, X, Monitor, Video } from 'lucide-react';
+import { ExternalLink, Code2, Layers, Cpu, X, Monitor, Video, Copy, Check, FileText } from 'lucide-react';
 
 // Interfaces ensuring type-safety across all components
 interface Project {
@@ -75,7 +75,7 @@ const PROJECTS: Project[] = [
     title: 'Coupons Management System',
     subtitle: 'Secure Trading & E-Commerce Platform',
     achievement: 'Developed a comprehensive trading platform connecting companies and customers, governed by an administrator with strict transaction validation patterns.',
-    tech: ['Java 11', 'Spring Boot 2.7.11', 'React 18', 'TypeScript', 'Redux Toolkit', 'PostgreSQL', 'Spring Security', 'JWT', 'Material UI'],
+    tech: ['Java', 'Spring Boot', 'React', 'TypeScript', 'Redux Toolkit', 'PostgreSQL', 'Spring Security', 'JWT', 'Material UI'],
     imagePath: '/screenshots/coupons.png',
     links: {
       githubBackend: 'https://github.com/elad9219/coupons-system-backend',
@@ -98,7 +98,7 @@ const PROJECTS: Project[] = [
     title: 'TinyURL',
     subtitle: 'High-Scale URL Shortening Service',
     achievement: 'Engineered a High-Availability system capable of handling massive read/write requests, while performing advanced click tracking and real-time analytics.',
-    tech: ['Java 11', 'Spring Boot', 'React', 'TypeScript', 'MongoDB', 'Redis', 'Cassandra', 'Docker'],
+    tech: ['Java', 'Spring Boot', 'React', 'TypeScript', 'MongoDB', 'Redis', 'Cassandra', 'Docker'],
     imagePath: '/screenshots/tinyurl.png',
     links: {
       githubBackend: 'https://github.com/elad9219/tinyurl',
@@ -121,7 +121,7 @@ const PROJECTS: Project[] = [
     title: 'AI Chatbot',
     subtitle: 'Smart Conversational Agent',
     achievement: 'Built an interactive communication system integrating Natural Language Processing (NLP) with real-time data extraction from external APIs to manage complex conversation flows.',
-    tech: ['Java', 'Spring Boot', 'React.ts', 'Dialogflow NLU', 'Webhooks', 'Regex', 'Docker'],
+    tech: ['Java', 'Spring Boot', 'React TS', 'Dialogflow NLU', 'Webhooks', 'Regex', 'Docker'],
     imagePath: '/screenshots/chatbot.png',
     links: {
       githubBackend: 'https://github.com/elad9219/chatbot',
@@ -151,6 +151,17 @@ const SKILLS = {
 
 export default function App() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const [copied, setCopied] = useState(false);
+
+  const handleCopyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText('elad9219@gmail.com');
+      setCopied(true);
+      setTimeout(() => setCopied(false), 3000);
+    } catch (err) {
+      console.error('Failed to copy email script parameters', err);
+    }
+  };
 
   const fadeUpVariant: Variants = {
     hidden: { opacity: 0, y: 40 },
@@ -184,7 +195,7 @@ export default function App() {
           transition={{ duration: 0.6 }}
           className="text-[#0071e3] font-semibold tracking-wide text-lg mb-3"
         >
-          AI-Driven Engineering
+          Robust Software Architectures
         </motion.p>
         
         <motion.h1 
@@ -193,7 +204,7 @@ export default function App() {
           transition={{ duration: 0.8, delay: 0.1 }}
           className="text-5xl md:text-7xl font-bold tracking-tight mb-6 bg-gradient-to-b from-white to-neutral-400 bg-clip-text text-transparent"
         >
-          Building robust architectures & premium interfaces.
+          Building scalable logic & microservice systems.
         </motion.h1>
 
         <motion.p 
@@ -202,7 +213,7 @@ export default function App() {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="text-lg md:text-xl text-neutral-400 max-w-2xl mb-10 leading-relaxed"
         >
-          Full-Stack Software Developer specializing in Java Spring Boot backends and React TS frontends. Committed to distributed systems, messaging queues, and performance optimization.
+          Software Developer specializing in production-grade backends and dynamic client applications. Dedicated to optimization, caching structures, and messaging queues.
         </motion.p>
 
         <motion.div 
@@ -211,9 +222,20 @@ export default function App() {
           transition={{ duration: 1, delay: 0.4 }}
           className="flex flex-wrap gap-4 justify-center"
         >
-          <a href="mailto:elad9219@gmail.com" className="flex items-center gap-2 bg-white text-black px-6 py-3 rounded-full font-medium hover:bg-white/90 transition-all duration-200">
-            <Mail size={18} /> Contact Me
-          </a>
+          <button 
+            onClick={handleCopyEmail}
+            className="flex items-center gap-2 bg-white text-black px-6 py-3 rounded-full font-medium hover:bg-white/90 transition-all duration-200 shadow-lg min-w-[160px] justify-center"
+          >
+            {copied ? (
+              <>
+                <Check size={18} className="text-emerald-600" /> Email Copied!
+              </>
+            ) : (
+              <>
+                <Copy size={18} /> Copy Email
+              </>
+            )}
+          </button>
           <a href="https://www.linkedin.com/in/elad-tennenboim/" target="_blank" rel="noreferrer" className="flex items-center gap-2 bg-[#1c1c1e] border border-white/10 px-6 py-3 rounded-full font-medium hover:bg-white/5 transition-all duration-200">
             <FileText size={18} /> View LinkedIn
           </a>
@@ -239,7 +261,7 @@ export default function App() {
           >
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-8">Professional Summary</h2>
             <p className="text-lg text-neutral-400 leading-relaxed mb-6">
-              Results-driven Software Developer specializing in robust backend architecture (Java Spring Boot) and dynamic frontend interfaces (React TS). Proven self-learning capabilities and hands-on experience in the full software development lifecycle, from complex API integrations and database management to cloud containerized deployment.
+              Results-driven Software Developer specializing in robust backend architecture and dynamic frontend interfaces. Proven self-learning capabilities and hands-on experience in the full software development lifecycle, from complex API integrations and database management to cloud containerized deployment.
             </p>
             <p className="text-lg text-neutral-400 leading-relaxed">
               Highly focused on writing clean, maintainable code, solving distributed system challenges, and implementing modern storage paradigms including asynchronous query optimization and real-time streaming buffers.
@@ -281,9 +303,15 @@ export default function App() {
                     (e.target as HTMLElement).style.display = 'none';
                   }}
                 />
+                
+                {/* Visual Dark Overlay Mask to resolve low contrast parameters */}
+                <div className="absolute inset-0 bg-gradient-to-t from-[#1c1c1e] via-black/40 to-black/20" />
+
                 <div className="relative z-10 flex flex-col items-center gap-2 text-center p-4">
-                  <span className="text-xs font-mono uppercase tracking-widest text-[#0071e3] bg-[#0071e3]/10 px-3 py-1 rounded-full border border-[#0071e3]/20">System Application</span>
-                  <p className="text-2xl font-bold tracking-tight text-white/90">{project.title} Workspace</p>
+                  <span className="text-[11px] font-mono uppercase tracking-widest text-sky-400 bg-black/60 backdrop-blur-sm px-3 py-1 rounded-full border border-white/10 shadow-md">
+                    System Application
+                  </span>
+                  <p className="text-2xl font-bold tracking-tight text-white drop-shadow-md">{project.title} Workspace</p>
                 </div>
               </div>
 
