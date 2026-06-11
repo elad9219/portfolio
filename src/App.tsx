@@ -260,10 +260,10 @@ export default function App() {
           >
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-8">Professional Summary</h2>
             <p className="text-lg text-neutral-400 leading-relaxed mb-6">
-              Results-driven Software Developer specializing in robust backend architecture and dynamic frontend interfaces[cite: 14]. Proven self-learning capabilities and hands-on experience in the full software development lifecycle, from complex API integrations and database management to cloud containerized deployment[cite: 14].
+              Results-driven Software Developer specializing in robust backend architecture and dynamic frontend interfaces. Proven self-learning capabilities and hands-on experience in the full software development lifecycle, from complex API integrations and database management to cloud containerized deployment.
             </p>
             <p className="text-lg text-neutral-400 leading-relaxed">
-              Highly focused on writing clean, maintainable code, solving distributed system challenges, and implementing modern storage paradigms including asynchronous query optimization and real-time streaming buffers[cite: 14].
+              Highly focused on writing clean, maintainable code, solving distributed system challenges, and implementing modern storage paradigms including asynchronous query optimization and real-time streaming buffers.
             </p>
           </motion.div>
         </div>
