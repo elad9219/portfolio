@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence, type Variants } from 'framer-motion';
 import { ExternalLink, Code2, Layers, Cpu, X, Monitor, Video, Copy, Check, FileText } from 'lucide-react';
+import { Analytics } from '@vercel/analytics/react';
 
 // Interfaces ensuring type-safety across all components
 interface Project {
@@ -259,10 +260,10 @@ export default function App() {
           >
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-8">Professional Summary</h2>
             <p className="text-lg text-neutral-400 leading-relaxed mb-6">
-              Results-driven Software Developer specializing in robust backend architecture and dynamic frontend interfaces. Proven self-learning capabilities and hands-on experience in the full software development lifecycle, from complex API integrations and database management to cloud containerized deployment.
+              Results-driven Software Developer specializing in robust backend architecture and dynamic frontend interfaces[cite: 14]. Proven self-learning capabilities and hands-on experience in the full software development lifecycle, from complex API integrations and database management to cloud containerized deployment[cite: 14].
             </p>
             <p className="text-lg text-neutral-400 leading-relaxed">
-              Highly focused on writing clean, maintainable code, solving distributed system challenges, and implementing modern storage paradigms including asynchronous query optimization and real-time streaming buffers.
+              Highly focused on writing clean, maintainable code, solving distributed system challenges, and implementing modern storage paradigms including asynchronous query optimization and real-time streaming buffers[cite: 14].
             </p>
           </motion.div>
         </div>
@@ -494,6 +495,9 @@ export default function App() {
           </div>
         )}
       </AnimatePresence>
+
+      {/* Vercel Web Analytics Production Tracker */}
+      <Analytics />
 
     </div>
   );
